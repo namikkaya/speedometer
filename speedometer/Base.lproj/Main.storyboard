@@ -1,24 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e5p-Kp-59A">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Manager-->
+        <scene sceneID="C86-eO-pp1">
+            <objects>
+                <navigationController id="e5p-Kp-59A" customClass="navigationManager" customModule="speedometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hfh-Z8-Q0o">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="10J-L1-qOe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B9Z-hf-Pgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-769" y="133"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="speedometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-As-wz6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="490"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMo-ah-vLD">
+                                <rect key="frame" x="27" y="64" width="320" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="lv6-Dc-Je0"/>
+                                    <constraint firstAttribute="height" constant="50" id="rWx-In-Z5J"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUX-ji-fcb" customClass="speedDisplay" customModule="speedometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="490" width="375" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="V97-Ga-ZPk"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEw-h9-u61" customClass="toogleButton" customModule="speedometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="610" width="375" height="57"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.13124972751830333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="EyI-ty-sHm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="START_BUTTON_ACTION:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U2T-5i-LeR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2O2-Rc-qug">
+                                <rect key="frame" x="16" y="454" width="343" height="36"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="topSpeed: ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.85051157990000004" green="0.0" blue="0.0079622814980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name=".SFNSDisplay"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="123">
+                                        <attributes>
+                                            <color key="NSColor" red="0.85051157990000004" green="0.0" blue="0.0079622814980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="29" name=".SFNSDisplay"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="km/s">
+                                        <attributes>
+                                            <color key="NSColor" red="0.85051157990000004" green="0.0" blue="0.0079622814980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="11" name=".SFNSDisplay"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.74574346319999996" green="0.74574346319999996" blue="0.74574346319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MUX-ji-fcb" firstAttribute="top" secondItem="2O2-Rc-qug" secondAttribute="bottom" id="2MC-6f-OIG"/>
+                            <constraint firstItem="qmk-As-wz6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BCR-Vq-1Th"/>
+                            <constraint firstItem="vMo-ah-vLD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BPc-3i-SWC"/>
+                            <constraint firstItem="jEw-h9-u61" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JnY-XS-qOM"/>
+                            <constraint firstItem="MUX-ji-fcb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TXb-iY-OtT"/>
+                            <constraint firstItem="jEw-h9-u61" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TZY-jr-Oh1"/>
+                            <constraint firstItem="2O2-Rc-qug" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Vb6-rb-Vwy"/>
+                            <constraint firstItem="qmk-As-wz6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XFr-Lg-w8z"/>
+                            <constraint firstItem="MUX-ji-fcb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zbi-5G-wWQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2O2-Rc-qug" secondAttribute="trailing" constant="16" id="a7K-56-LhD"/>
+                            <constraint firstItem="vMo-ah-vLD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fyP-Xx-hrC"/>
+                            <constraint firstItem="qmk-As-wz6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="kdJ-bP-YOk"/>
+                            <constraint firstItem="MUX-ji-fcb" firstAttribute="top" secondItem="qmk-As-wz6" secondAttribute="bottom" id="kla-8d-J2x"/>
+                            <constraint firstItem="jEw-h9-u61" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pDW-4e-J5C"/>
+                            <constraint firstItem="jEw-h9-u61" firstAttribute="top" secondItem="MUX-ji-fcb" secondAttribute="bottom" id="zm1-kS-AX4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6gY-9V-fvJ"/>
+                    <connections>
+                        <outlet property="gBannerView" destination="vMo-ah-vLD" id="5bd-OV-pb2"/>
+                        <outlet property="mapView" destination="qmk-As-wz6" id="bSe-QY-3lc"/>
+                        <outlet property="speedDisplay" destination="MUX-ji-fcb" id="izw-O6-EuB"/>
+                        <outlet property="topSpeedLabel" destination="2O2-Rc-qug" id="B2M-o7-DQP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Show Result View Controller-->
+        <scene sceneID="0LW-bd-A9Z">
+            <objects>
+                <viewController storyboardIdentifier="showResultVC" id="5Pg-qz-BfH" customClass="showResultViewController" customModule="speedometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6lz-dx-AoL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upB-7U-Bww">
+                                <rect key="frame" x="166" y="323" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBf-XV-ZQx">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="openRewardAdVideo:" destination="5Pg-qz-BfH" eventType="touchUpInside" id="8fL-WJ-6od"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="upB-7U-Bww" firstAttribute="centerY" secondItem="6lz-dx-AoL" secondAttribute="centerY" id="HAl-Q1-Klv"/>
+                            <constraint firstItem="cBf-XV-ZQx" firstAttribute="centerX" secondItem="6lz-dx-AoL" secondAttribute="centerX" id="K72-2n-w34"/>
+                            <constraint firstItem="IZD-Zl-v1J" firstAttribute="bottom" secondItem="cBf-XV-ZQx" secondAttribute="bottom" constant="20" id="VB9-Xi-KPr"/>
+                            <constraint firstItem="upB-7U-Bww" firstAttribute="centerX" secondItem="6lz-dx-AoL" secondAttribute="centerX" id="wFN-h3-527"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IZD-Zl-v1J"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBJ-mX-sz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937" y="133"/>
         </scene>
     </scenes>
 </document>
